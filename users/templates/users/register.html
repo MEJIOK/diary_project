@@ -1,0 +1,102 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+<style>
+
+    .register-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 50px auto;
+        max-width: 500px;
+    }
+
+    .register-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .register-header h1 {
+        font-family: 'Montserrat', sans-serif;
+        color: #087990;
+        font-size: 2.5rem;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .form-control {
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn-custom {
+        background-color: #087990;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+    .btn-custom:hover {
+        background-color: #066c7a;
+    }
+
+    .text-center {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .text-center a {
+        color: #087990;
+        text-decoration: none;
+    }
+
+    .text-center a:hover {
+        text-decoration: underline;
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 0.875em;
+    }
+
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="register-container">
+        <div class="register-header">
+            <h1>Регистрация</h1>
+        </div>
+        <form id="registerForm" method="POST" action="{% url 'users:register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-custom">Зарегистрироваться</button>
+        </form>
+        <div class="text-center">
+            <p>Уже есть аккаунт? <a href="{% url 'users:login' %}">Войти</a></p>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

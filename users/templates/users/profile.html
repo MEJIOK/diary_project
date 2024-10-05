@@ -1,0 +1,153 @@
+{% extends 'diary/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to bottom, #1f4037, #99f2c8);
+        font-family: 'Roboto', sans-serif;
+        color: #333;
+    }
+
+    nav {
+        background-color: #ffffff;
+        border-left: 1px solid #e0e0e0;
+        padding: 15px;
+        position: fixed;
+        top: 10px;
+        right: 0;
+        height: 97.5%;
+        width: 250px;
+        box-shadow: none;
+    }
+
+    nav a {
+        color: #333;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        display: block;
+        padding: 10px 0;
+    }
+
+    nav a:hover {
+        color: #087990;
+    }
+
+    .profile-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 80px auto;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    .profile-avatar {
+        margin-bottom: 30px;
+    }
+
+    .profile-avatar img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .profile-details {
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .profile-details h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2rem;
+        font-weight: 500;
+        color: #087990;
+        margin-bottom: 20px;
+    }
+
+    .profile-details p {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .btn-custom {
+        background-color: #087990;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-family: 'Roboto', sans-serif;
+        transition: background-color 0.3s ease-in-out;
+        margin: 10px 5px;
+        display: inline-block;
+    }
+
+    .btn-custom:hover {
+        background-color: #066c7a;
+    }
+
+    footer {
+        background-color: #ffffff;
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+        color: #666;
+        font-size: 0.9rem;
+        margin: 10px auto;
+    }
+
+    footer a {
+        color: #087990;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            width: 100%;
+            height: auto;
+            border-left: none;
+            position: static;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        header, .profile-container, footer {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+</style>
+
+<div class="profile-container">
+    <div class="profile-avatar">
+        {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="{{ user.get_full_name }}" class="img-fluid rounded-circle">
+        {% else %}
+            <img src="{% static 'img/default-avatar.png' %}" alt="Аватар" class="img-fluid rounded-circle">
+        {% endif %}
+    </div>
+
+    <div class="profile-details">
+        <h2>{{ user.get_full_name }}</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Телефон:</strong> {{ user.num_phone }}</p>
+        <p><strong>Страна:</strong> {{ user.country }}</p>
+    </div>
+
+    <div class="profile-actions">
+        <a href="{% url 'users:edit_profile' %}" class="btn btn-custom">Редактировать профиль</a>
+    </div>
+</div>
+{% endblock %}

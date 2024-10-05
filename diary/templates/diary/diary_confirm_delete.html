@@ -1,0 +1,65 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+
+<style>
+    .diary-delete-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 50px auto;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    .diary-delete-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #dc3545;
+        margin-bottom: 20px;
+    }
+
+    .diary-delete-warning {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .btn-custom {
+        background-color: #dc3545;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+
+    .btn-custom:hover {
+        background-color: #bb2d3b;
+    }
+
+    .btn-cancel {
+        background-color: #6c757d;
+    }
+
+    .btn-cancel:hover {
+        background-color: #5a6268;
+    }
+
+</style>
+<div class="diary-delete-container">
+    <h1 class="diary-delete-title">Удалить запись</h1>
+    <p class="diary-delete-warning">Вы уверены, что хотите удалить эту запись? Это действие не может быть отменено.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-custom">Удалить</button>
+        <a href="{% url 'diary:list' %}" class="btn btn-cancel">Отмена</a>
+    </form>
+</div>
+
+{% endblock %}

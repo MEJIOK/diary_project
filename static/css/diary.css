@@ -1,0 +1,205 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background: #f0f0f0;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Контейнер для основного контента */
+.diary {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 260px;
+    margin-top: 10px;
+}
+
+/* Навигационное меню справа */
+nav {
+    background-color: #ffffff;
+    border-left: 1px solid #e0e0e0;
+    padding: 15px;
+    position: fixed;
+    top: 10px;
+    right: 0;
+    height: 97.5%;
+    width: 250px;
+    box-shadow: none;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    padding: 10px 0;
+}
+
+nav a:hover {
+    color: #087990;
+}
+
+.badge {
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+/* Заголовки */
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #087990;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #087990;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Контейнер для основного контента */
+.diary {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #f7f7f7; /* Светло-серый фон */
+    border-radius: 8px; /* Закругленные углы */
+}
+
+/* Стиль списка записей */
+.diary-section {
+    padding: 0px 0;
+    margin: 10px auto;
+}
+
+.diary-entry {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #087990;
+    position: relative;
+}
+
+.diary-entry h2 {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+    color: #087990;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.diary-entry p {
+    color: #555;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.diary-entry .entry-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+/* Кнопки */
+.btn-group-custom {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-custom {
+    background-color: #087990;
+    border: none;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease-in-out;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.btn-custom:hover {
+    background-color: #066c7a;
+}
+
+/* Футер */
+footer {
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    color: #666;
+    font-size: 0.9rem;
+    margin: 10px auto;
+    flex-shrink: 0; /* Устанавливаем, чтобы футер не сжимался */
+}
+
+footer a {
+    color: #087990;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.login-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 100px auto;
+    max-width: 500px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    font-size: 2.5rem;
+}
+
+/* Адаптивный стиль для мобильных устройств */
+@media (max-width: 768px) {
+    nav {
+        width: 100%;
+        height: auto;
+        border-left: none;
+        position: static;
+        padding: 15px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    header, .diary-section, footer {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

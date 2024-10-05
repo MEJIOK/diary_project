@@ -1,0 +1,125 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+
+<style>
+    .diary-detail-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 50px auto;
+        max-width: 1000px;
+        text-align: center;
+    }
+
+    .diary-detail-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #087990;
+        margin-bottom: 20px;
+    }
+
+    .diary-detail-date {
+        font-size: 1rem;
+        color: #999;
+        margin-bottom: 20px;
+    }
+
+    .diary-detail-content {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+        font-family: 'Roboto', sans-serif;
+        margin-bottom: 30px;
+    }
+
+    .btn-custom {
+        background-color: #087990;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-family: 'Roboto', sans-serif;
+        transition: background-color 0.3s ease-in-out;
+        margin: 10px 5px;
+        display: inline-block;
+    }
+
+    .btn-custom:hover {
+        background-color: #066c7a;
+    }
+
+    .btn-group-custom {
+        margin-top: 20px;
+    }
+
+    .modal-content {
+        padding: 20px;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="diary-section row">
+        {% for diary in object_list %}
+        <div class="diary-entry col-md-4 mb-4">
+            <h2>{{ diary.title|truncatewords:5 }}</h2>
+            <p class="entry-date">{{ diary.created_at|date:"d M Y" }}</p>
+            <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#diaryModal{{ diary.pk }}">
+                Подробнее
+            </button>
+        </div>
+
+        <!-- Модальное окно -->
+        <div class="modal fade" id="diaryModal{{ diary.pk }}" tabindex="-1" aria-labelledby="diaryModalLabel{{ diary.pk }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="diaryModalLabel{{ diary.pk }}">{{ diary.title }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="diary-detail-date">Создано: {{ diary.created_at|date:"d M Y" }}</p>
+                        <p>{{ diary.content }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="{% url 'diary:moderation_action' diary.slug %}">
+                            {% csrf_token %}
+                            <button type="submit" name="approve" class="btn btn-custom">Опубликовать</button>
+                            <button type="submit" name="reject" class="btn btn-custom">Отклонить</button>
+                        </form>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="diary-entry">
+    {% if is_paginated %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; Первая </a>
+                <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                <a href="?page={{ paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endif %}
+    </div>
+    </div>
+</div>
+
+{% endblock %}

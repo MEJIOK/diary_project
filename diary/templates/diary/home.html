@@ -1,0 +1,30 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+
+<header>
+    <h1>Ваш личный дневник</h1>
+    <p>Сохраните самые ценные впечатления, приведите в
+порядок свои мысли и помогите себе вырасти над собой.</p>
+</header>
+<section class="diary-section">
+        {% for object in object_list %}
+        <div class="diary-entry">
+            <h2>{{ object.title|truncatewords:5 }}</h2>
+            <p class="entry-date">{{ object.created_at }}</p>
+            <p>{{ object.content|truncatewords:50 }}</p>
+            <p>Просмотры: {{ object.views }}</p>
+            <div class="btn-group-custom">
+                <a href="{% url 'diary:detail' slug=object.slug %}" class="btn btn-custom">Подробнее</a>
+            </div>
+        </div>
+        {% endfor %}
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+

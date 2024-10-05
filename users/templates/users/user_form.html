@@ -1,0 +1,78 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+<style>
+    body {
+        background-color: #f4f4f4;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .profile-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 50px auto;
+        max-width: 600px;
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .profile-header h1 {
+        font-family: 'Montserrat', sans-serif;
+        color: #087990;
+        font-size: 2.5rem;
+    }
+
+    .profile-details {
+        margin-bottom: 20px;
+    }
+
+    .profile-details label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .profile-details p {
+        margin-bottom: 10px;
+    }
+
+    .btn-custom {
+        background-color: #087990;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background-color: #066c7a;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Ваш профиль</h1>
+        </div>
+
+        <div class="profile-details">
+            <label>Имя:</label>
+            <p>{{ user.username }}</p>
+
+            <label>Email:</label>
+            <p>{{ user.email }}</p>
+
+            <label>Дата регистрации:</label>
+            <p>{{ user.date_joined }}</p>
+        </div>
+
+        <a href="/" class="btn btn-custom">Редактировать профиль</a>
+    </div>
+</div>
+</body>
+{% endblock %}

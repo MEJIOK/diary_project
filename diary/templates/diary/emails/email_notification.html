@@ -1,0 +1,48 @@
+<!-- templates/emails/email_notification.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уведомление</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        h1 {
+            color: #087990;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Поздравляем!</h1>
+        <p>Ваша запись "{{ title }}" достигла 100 просмотров!</p>
+        <p>Спасибо за использование нашего сервиса.</p>
+        <div class="footer">
+            <p>&copy; 2024 Личный Дневник. Все права защищены.</p>
+        </div>
+    </div>
+</body>
+</html>

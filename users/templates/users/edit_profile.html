@@ -1,0 +1,108 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+<style>
+
+    .profile-edit-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 100px auto;
+        max-width: 600px;
+    }
+
+    .profile-edit-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .profile-edit-header h1 {
+        font-family: 'Montserrat', sans-serif;
+        color: #087990;
+        font-size: 2.5rem;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .form-control {
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn-custom {
+        background-color: #087990;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+    .btn-custom:hover {
+        background-color: #066c7a;
+    }
+
+    .text-center {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .text-center a {
+        color: #087990;
+        text-decoration: none;
+    }
+
+    .text-center a:hover {
+        text-decoration: underline;
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 0.875em;
+    }
+</style>
+<div class="container">
+    <div class="profile-edit-container">
+        <div class="profile-edit-header">
+            <h1>Редактирование профиля</h1>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+    </div>
+    <div class="form-group">
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+    </div>
+    <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+    <div class="form-group">
+        {{ form.num_phone.label_tag }}
+        {{ form.num_phone }}
+    </div>
+    <div class="form-group">
+        {{ form.country.label_tag }}
+        {{ form.country }}
+    </div>
+    <div class="form-group">
+        {{ form.avatar.label_tag }}
+        {{ form.avatar }}
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+</form>
+
+    </div>
+</div>
+{% endblock %}

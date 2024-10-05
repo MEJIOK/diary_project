@@ -1,0 +1,58 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+
+<style>
+    .diary-update-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 60px auto;
+        max-width: 600px;
+    }
+
+    .diary-update-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #087990;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .btn-custom {
+        background-color: #087990;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        width: 50%;
+        text-transform: uppercase;
+        margin-left: 140px;
+        margin-top: 5px;
+    }
+
+    .btn-custom:hover {
+        background-color: #066c7a;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+</style>
+
+<div class="diary-update-container">
+    <h1 class="diary-update-title">{{ title_h1 }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-custom">Сохранить изменения</button>
+    </form>
+</div>
+
+{% endblock %}
+
