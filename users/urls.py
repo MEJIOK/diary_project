@@ -1,14 +1,10 @@
 from django.contrib.auth.views import LogoutView
 from django.urls import path
+
 from users.apps import UsersConfig
-from users.views import (
-    RegisterView,
-    UserProfileUpdateView,
-    email_confirm,
-    GeneratePasswordView,
-    login_view,
-    UserProfileView,
-)
+from users.views import (GeneratePasswordView, RegisterView,
+                         UserProfileUpdateView, UserProfileView, email_confirm,
+                         login_view)
 
 # Имя пространства имен для приложения "users"
 app_name = UsersConfig.name

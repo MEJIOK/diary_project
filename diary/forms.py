@@ -1,6 +1,7 @@
 from django import forms
-from diary.models import Diary
 from pytils.translit import slugify
+
+from diary.models import Diary
 
 
 class DiaryForm(forms.ModelForm):

@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 # Определение NULLABLE для полей, которые могут быть пустыми или NULL
 NULLABLE = {"blank": True, "null": True}

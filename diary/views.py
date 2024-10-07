@@ -1,20 +1,16 @@
+from django.contrib.auth.mixins import (LoginRequiredMixin,
+                                        PermissionRequiredMixin)
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
+from django.db.models import F, Q
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.html import strip_tags
 from django.views import View
-from django.views.generic import (
-    CreateView,
-    DeleteView,
-    UpdateView,
-    ListView,
-    DetailView,
-)
-from django.db.models import F, Q
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 
 from config.settings import EMAIL_HOST_USER
 from diary.forms import DiaryForm, DiaryUpdateForm

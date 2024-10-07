@@ -1,6 +1,7 @@
-from django.db import models
-from pytils.translit import slugify  # Модуль для транслитерации заголовков в slug
 from django.conf import settings
+from django.db import models
+from pytils.translit import \
+    slugify  # Модуль для транслитерации заголовков в slug
 
 # Свойства NULLABLE, которые можно определить в отдельном файле constants.py
 NULLABLE = {"blank": True, "null": True}

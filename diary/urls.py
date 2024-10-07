@@ -1,15 +1,10 @@
 from django.urls import path
+
 from diary.apps import DiaryConfig
-from diary.views import (
-    HomeListView,
-    DiaryCreateView,
-    DiaryUpdateView,
-    DiaryDeleteView,
-    DiaryListView,
-    DiaryDetailView,
-    DiaryModerationListView,
-    DiaryModerationActionView,
-)
+from diary.views import (DiaryCreateView, DiaryDeleteView, DiaryDetailView,
+                         DiaryListView, DiaryModerationActionView,
+                         DiaryModerationListView, DiaryUpdateView,
+                         HomeListView)
 
 # Установка имени приложения, которое будет использоваться в пространстве имен URL.
 app_name = DiaryConfig.name

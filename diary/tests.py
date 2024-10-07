@@ -1,8 +1,7 @@
-from django.test import TestCase
-
-
-from django.urls import reverse
 from django.core import mail
+from django.test import TestCase
+from django.urls import reverse
+
 from diary.models import Diary
 from users.models import User
 

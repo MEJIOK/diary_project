@@ -1,20 +1,17 @@
 import secrets
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from config.settings import EMAIL_HOST_USER
-from users.forms import (
-    UserRegisterForm,
-    UserProfileForm,
-    UserLoginForm,
-    CustomPasswordResetForm,
-)
+from users.forms import (CustomPasswordResetForm, UserLoginForm,
+                         UserProfileForm, UserRegisterForm)
 from users.models import User
 
 
